@@ -1,5 +1,7 @@
 # leetcodeDaily
-* Cú pháp đặt tên file: `ngày_bài tập thứ_domainuser.cpp`
+* Cú pháp đặt tên file: `day_taskNumber_domainuser.cpp`
+
+* sau khi giải bài mỗi cuối tuần sẽ tạo một file summarize  theo cú pháp : `week_domain_summarize.txt` để tổng hợp lại hướng giải
 
 * Day 1:
     1. [Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/description/)
