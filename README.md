@@ -1,7 +1,7 @@
 # leetcodeDaily
-* Cú pháp đặt tên file: `day_taskNumber_domainuser.cpp` trong file problems
+* Cú pháp đặt tên file: `day_taskNumber_domainuser.cpp` trong folder problems
 
-* sau khi giải bài mỗi cuối tuần sẽ tạo một file summarize trong file problems  theo cú pháp : `domain_week_summarize.txt` để tổng hợp lại hướng giải
+* sau khi giải bài mỗi cuối tuần sẽ tạo một file summarize trong folder problems  theo cú pháp : `domain_week_summarize.txt` để tổng hợp lại hướng giải
 
 * tạo file bài làm:
 	1. ./init `tên_bài.cpp`
