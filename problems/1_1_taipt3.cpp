@@ -15,37 +15,29 @@ using namespace std;
 /*
 */
 void solve(){
-	vector<int> nums={3,1};
+	vector<int> nums={4,5,6,7,0,1,2};
 	int target=3;
 	int n= nums.size();
 	int left = 0, right = n-1;
-	while(left<= right){
+	while(left<=right){
 		int mid = (left+ right)/2;
-		if(nums[mid]==target){
-			cout<<mid<<endl;
-			return;
-		}
-		if(nums[left]<= nums[right]){
-			if(nums[mid]<= target) left = mid+1;
-			else right = mid-1;
-		} else{
-			if(target>=nums[left]){
-				if(nums[mid]>=nums[left] && nums[mid]<=target){
-					left = mid+1;
-				} else{ 
-					right = mid-1;
-				}
+		if(nums[mid]==target) {cout<< mid<<endl; return;}
+		if(nums[left]<=nums[mid]){
+			if(target >= nums[left] && target<nums[mid]){
+				right = mid-1;
 			} else {
-				if(nums[mid]<=nums[right] && nums[mid]>target){
-					right = mid-1;
-				} else left = mid+1;
+				left = mid+1;
 			}
+		} else {
+			if(target <=nums[right] && target >= nums[mid]){
+				left = mid+1;
+			} else {
+				right = mid -1;
+			}
+				
 		}
-		cout<< left << " "<<right<<endl; 
 	}
-	if(right==-1 && nums[right]!=target) cout<<"-1"<<endl;
-	else cout<< right<<endl;
-
+	cout<<"-1"<<endl;
 }
  
 int main() {
