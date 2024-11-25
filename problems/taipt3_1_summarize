@@ -1,0 +1,27 @@
+Buổi 1:
+1. khác tới thuật toán binary search thông thường là nó ko có một khoảng tăng liên tục key >1  cho nên mảng ko giữ nguyên được
+	=> tính mid thì sẽ có hai trường hợp sau :
+		* mid nằm bên khoảng tăng trái a[mid]>= a[left]
+			nếu target nằm giữa left và mid (target >= a[letft] && target < a[mid]) : right = mid -1;
+			nếu không thì left = mid+1;
+		* mid nằm bên khoảng tăng phải a[mid]<= a[right]:
+			nếu target nằm giữa right và mid( target<=a[right} && target >= a[mid]: left = mid +1;
+			nếu không thì right = mid -1;
+	nếu bắt trúng a[mid]== target thì in ra
+2. Đơn giản => dùng upper_bound và lower_bound
+3. Dùng dijkstra
+Buổi 2:
+1. tương tự bài 1 buổi 1 nhưng bài này có thêm là key =0 tức là có thể giữ nguyên như ban đầu.
+   vậy xét a[mid] với a[left] nếu a[mid]>= a[left] tức là dãy tăng => điểm xoay nằm bên phải  dịch left = mid +1  
+           a[mid] với a[right] nếu a[mid] <= a[right] => điểm xoay nằm bên trái right = mid-1;
+   * tuy nhiên ta có trường hợp index rotato =0 => mảng giữ nguyên, nên ta thực hiện xét với right trước nếu trúng case giữ nguyên thì 
+     sẽ đi về trái
+2. với bài này thì với mỗi lần tìm mid ta xét :
+	* > mid +1 : thì chính mid hoặc 1 đỉnh nằm bên trái là peak, ta dịch nó về bên trái right = mid-1;
+	* < mid+1 : thì peak nằm bên phải, dịch mid về bên phải left = mid +1
+	nếu dãy tăng hoài thì dịch hoài về a[n-1] ta có a[n-1] >a[n-2] và a[n-1]>a[n]=-inf
+3. dùng hai con trỏ update tính capacity left và right  dùng tham lam
+	nếu height[left] < height[right] : left++
+	height[left] >= height[right] : right--;
+	mỗi bước nhớ tính và update result.
+
