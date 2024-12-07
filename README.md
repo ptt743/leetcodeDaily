@@ -6,7 +6,6 @@
 * tạo file bài làm:
 	1. ./init `tên_bài.cpp`
 	2. ./run
-Week 1:
 * Day 1:
     1. [Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/description/)
     2. [Find First and Last Position of Element in Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/description/)
@@ -15,8 +14,7 @@ Week 1:
     1. [Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/description/)
     2. [Find Peak Element](https://leetcode.com/problems/find-peak-element/description/)
     3. [Container With Most Water](https://leetcode.com/problems/container-with-most-water/description/)
-Week 2:
-* Day 1:
+* Day 3:
     1. [Search in Rotated Sorted Array II](https://leetcode.com/problems/search-in-rotated-sorted-array-ii/description/)
     2. [Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/)
     3. [Generate Parentheses](https://leetcode.com/problems/generate-parentheses/description/)
