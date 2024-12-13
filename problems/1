@@ -1,0 +1,12 @@
+# Đổi phím điều khiển từ Ctrl-b sang Ctrl-a
+set-option -g prefix C-a
+unbind-key C-b
+bind-key C-a send-prefix
+
+# Tăng thời gian chờ khi bấm tổ hợp phím
+set-option -s escape-time 500
+
+# Chia khung theo mặc định
+bind \ split-window -h
+bind - split-window -v
+
