@@ -57,11 +57,27 @@ void solve3(){
 	int k= 8;
 	int n = matrix.size();
 	int m = matrix[0].size();
+	int left = matrix[0][0];
+	int right = matrix[n-1][m-1];
+	while(left <=right){
+		int mid =(left + right)/2;
+		int count = 0;
+		for(int i =0;i<n;i++){
+			int temp = m-1;
+			while(temp>=0 && matrix[i][temp]> mid){
+				temp--;
+			}
+			count += temp +1;
+		}
+		if(count>=k) right = mid-1;
+		else left = mid+1;
+	}
+	cout<< left <<endl;
 
 }
  
 int main() {
     ios_base::sync_with_stdio(0); cin.tie(0);
-    solve2();
+    solve3();
     return 0;
 }
