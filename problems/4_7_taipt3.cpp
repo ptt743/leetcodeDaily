@@ -15,12 +15,7 @@ using namespace std;
 /*
 */
 void solve(){
-	vector<int> nums;
-	int n = nums.size();
-	// i < j  < k
-	// nums[i] < nums[k] < nums[j]
-	//
-	:
+			
 }
  
 int main() {
