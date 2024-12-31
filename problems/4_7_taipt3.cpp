@@ -15,12 +15,33 @@ using namespace std;
 /*
 */
 void solve(){
-	vector<int> nums;
+	vector<int> nums={-1,3,2,0};
 	int n = nums.size();
 	// i < j  < k
 	// nums[i] < nums[k] < nums[j]
 	//
-	:
+	int minval = 1e9;
+	vector<int> mins(n,0);
+	for(int i =0;i< n;i++){
+		minval = min(minval, nums[i]);
+		mins[i] = minval;
+	}
+	set<int> st;
+	for(int i =n -1;i>=0;i--){
+		auto it = st.lower_bound(nums[i]);
+		if(it==st.begin()){
+			st.insert(nums[i]);
+			continue;
+		}
+		it--;
+		cout<<*it <<" "<<mins[i]<<endl;
+		if(*it > mins[i]){
+			cout<<"YES"<<endl;
+			return;
+		}
+		st.insert(nums[i]);
+	}
+	cout<<"NO"<<endl;
 }
  
 int main() {
