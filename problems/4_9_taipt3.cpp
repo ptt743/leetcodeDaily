@@ -15,9 +15,35 @@ using namespace std;
 /*
 */
 void solve(){
-	vector<int> nums;
-	vector<vector<int>> queries;
-
+	vector<int> nums = {2,0,2};
+	vector<vector<int>> queries={{0,2},{0,2},{1,1}};
+	sort(queries.begin(), queries.end());
+	int n = nums.size();
+	int temp = 0;
+	priority_queue<int, vector<int>, greater<int>> minheap;
+	priority_queue<int> maxheap;
+	int count = 0;
+	for(int i =0;i< n;i++){
+		while(temp<queries.size() && queries[temp][0] <=i){
+			maxheap.push(queries[temp][1]);
+			temp++;
+		}
+		nums[i] -= minheap.size();
+		while(nums[i]>0 && !maxheap.empty() && maxheap.top() >= i) {
+			minheap.push(maxheap.top());
+			maxheap.pop();
+			count++;
+			nums[i]--;
+		}
+		if(nums[i]>0){
+			cout<<"-1"<<endl;
+			return;
+		}
+		while(!minheap.empty() && minheap.top()==i){
+			minheap.pop();
+		}
+	}
+	cout<< queries.size() - count<<endl;
 }
  
 int main() {
