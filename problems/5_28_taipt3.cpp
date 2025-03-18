@@ -22,11 +22,6 @@ void solve(){
 	sort(nums.begin(), nums.end());
 	long long res = 0;
 	int left = 0;
-	for(int i =0;i< n;i++){
-		while(nums[left] + 
-			int count = i;
-			res += (long long)(count) * (count-1)/2;
-	}
 	cout<< res<<endl;
 }
  
