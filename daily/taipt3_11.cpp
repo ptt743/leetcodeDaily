@@ -20,14 +20,36 @@ using namespace std;
  *  fix suffix and find how many prefix can be combined to it to form number in certain range
  *  template : dp[index][state][ extend state]
 */
+
 void solve(){
 	long long start;
-	long long finish;
 	int limit;
 	string s;
-	int n = s.size();
-
-
+	long long finish;
+	
+	string high = to_string(finish);
+	string low = to_string(start);
+	int n = high.size();
+	int sizepre = n - low.size();
+	low = string( n - low.size(),'0') + low;
+	int dp[21][2][2]={};
+	dp[0][1][1] = 0;
+	for(int i =0;i< n;i++){
+		for( int sl = 0;sl <2; sl++){
+			for(int sh = 0; sh< 2;sh++){
+				int curr = dp[i][sl][sh];
+				int lo = sl? low[i] : '0';
+				int hi = sh? high[i] : '9';
+				if(i< lowsize){
+					for(int num = lo;num<=hi;num++){
+						
+					}
+				} else{
+					
+				}
+			}
+		}
+	}
 }
  
 int main() {
