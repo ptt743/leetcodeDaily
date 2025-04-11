@@ -17,29 +17,8 @@ using namespace std;
 /*
 */
 void solve(){
-<<<<<<< HEAD
-	vector<int> nums={1,2,4,8};
-	int n = nums.size();
-	sort(nums.begin(), nums.end());
-	vector<vector<int>> dp;
-
-	for(int i =0;i< n;i++){
-		for(int j = i-1;j>=0;j--){
-			if(nums[i] % nums[j]==0  && (dp[j].size()+1) > dp[i].size()){
-				vector<int> temp = dp[j];
-				temp.push_back(nums[i]);
-				dp[i]  = temp;
-			}
-		}
-	}
-	vector<int> result;
-	for(int i =0;i< n;i++){
-		if(dp[i].size() > result.size()) result = dp[i];
-	}
-	for(int i =0;i< n;i++) cout<< result[i]<<endl;
-=======
-	vector<int> nums={9,7,5,3};
-	int k = 1;
+	vector<int> nums={5,2,5,4,5};
+	int k = 2;
 	int n = nums.size();
 	sort(nums.begin(), nums.end());
 	bool check = true;
@@ -61,7 +40,6 @@ void solve(){
 	}
 	if(nums[0]>k) result++;
 	cout<< result <<endl;
->>>>>>> refs/remotes/origin/main
 }
  
 int main() {

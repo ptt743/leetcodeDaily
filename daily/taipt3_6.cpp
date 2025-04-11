@@ -16,20 +16,50 @@ using namespace std;
 //*****taipt*****//
 /*
 */
+struct TreeNode {
+      int val;
+      TreeNode *left;
+      TreeNode *right;
+      TreeNode() : val(0), left(nullptr), right(nullptr) {}
+      TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+      TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ };
 void solve(){
-	vector<int> nums={3,4,5,6,7,8};
-	int n = nums.size();
-	int res = 0;
-	function<void(int, int )> rc=[&](int xr, int index){
-		if(index==n){
-			res+=xr;
-			return;
+	TreeNode* root;
+	function<int(TreeNode*)> bfs=[&](TreeNode* root){
+		int d = 0;
+		queue<TreeNode*> qq;
+		qq.push(root);
+		while(!qq.empty()){
+			d++;
+			vector<TreeNode*> temp;
+			while(!qq.empty()){
+				TreeNode* node = qq.front();
+				qq.pop();
+				if(node->left) temp.push_back(node->left);
+				if(node->right) temp.push_back(node->right);
+				result[node->val] = make_pair(node, d); 
+			}
+			for(TreeNode* item : temp) qq.push(item);
+			
 		}
-		rc(xr^nums[index], index+1);
-		rc(xr, index+1);
+		return d;
 	};
-	rc(0,0);
-	cout<< res<<endl;
+	int maxdepth = bfs(root);
+	TreeNode* result = nullptr;
+	int maxd = 0;
+	int maxc = 0;
+	function<int(TreeNode*,int)> dfs(TreeNode* root,int depth)->int{
+		if(root == nullptr) return 0;
+		int left = dfs(root->left,depth+1);
+		int right = dfs(root->right, depth+1);
+		int total = left + right + (depth == maxdepth);
+		if((depth >= maxd && total > maxc)  || total >maxc) result = root;
+		return total;
+	}
+	dfs(root, 1);
+
+	return result;
 }
  
 int main() {
