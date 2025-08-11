@@ -1,0 +1,58 @@
+#include<iostream>
+#include<vector>
+#include<algorithm>
+#include<string>
+#include<queue>
+#include<stack>
+#include<set>
+#include<unordered_map>
+#include<map>
+#include<unordered_map>
+#include<cmath>
+#include<functional>
+#define ll long long
+
+using namespace std;
+//*****taipt*****//
+/*
+*/
+void solve(){
+	vector<vector<int>> events = {{1,2,4},{3,4,3},{2,3,1}};
+	int k = 2;
+	function<bool(vector<int>&, vector<int>&)> comp=[&](vector<int>&a, vector<int>&b){
+		return a[1]< b[1] || (a[1]==b[1] && a[0]<b[0]);
+	};	
+	sort(events.begin(), events.end());
+        int n = events.size();
+        
+        function<int(int)> binaryS = [&](int val)->int{
+            int left = 0, right = n-1;
+            while(left<= right){
+                int mid = (left + right)/2;
+                if(events[mid][0]> val) right = mid-1;
+                else left = mid+1;
+            }
+            return left;
+        };
+        vector<vector<int>> dp (n+1, vector<int>(k+1,0));
+        for(int i =0;i< n;i++) dp[i][1] = events[i][2];
+        for(int i =0;i< n; i++){
+		int index = binaryS(events[i][1]);
+		cout<< index << endl;
+		for(int j = 0;j<k;j++){
+			
+			dp[i+1][j] = max(dp[i+1][j], dp[i][j]);
+			if(index==n) continue;
+			dp[index][j+1] = max(dp[index][j+1], dp[i][j] + events[index][2]);
+			cout<< dp[i+1][j] <<" "<< dp[index][j+1]<<endl;
+		}
+	}
+	for(int i =0;i<=k;i++) cout<< dp[n][k]<<" ";
+        cout<<endl;		
+}
+ 
+int main() {
+    ios_base::sync_with_stdio(0); cin.tie(0);
+    solve();
+    return 0;
+}
