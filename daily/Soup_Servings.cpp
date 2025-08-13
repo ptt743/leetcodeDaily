@@ -17,7 +17,9 @@ using namespace std;
 /*
 */
 void solve(){
-		
+	int n;
+
+	if(
 }
  
 int main() {
