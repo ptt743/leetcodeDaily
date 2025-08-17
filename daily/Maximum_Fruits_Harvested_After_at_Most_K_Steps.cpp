@@ -17,20 +17,23 @@ using namespace std;
 /*
 */
 void solve(){
-	vector<vector<int>> fruits;
-	int startPos;
-	int k;
+	vector<vector<int>> fruits={{0,10000}};
+	int startPos = 200000;
+	int k = 200000;
 
 	int n = fruits.size();
 	int maxPos = fruits[n-1][0];
-	vector<int> sg(4*maxPos+1,0);
+	vector<int> sg(4*maxPos+4,0);
 
 	unordered_map<int,int> mp;
 	for(int i =0;i< n;i++) mp[fruits[i][0]] = fruits[i][1];
 	function<void(int,int,int)> build=[&](int p, int l, int r){
-		if(l==r && mp[l]!=0) sg[p] = mp[l];
+		if(l==r && mp.find(l)!=mp.end()) sg[p] = mp[l];
+		if(l==r) return;
 		int mid = (l+r)>>1;
-		sg[p] = build(p<<1, l, mid)+ build(p<<1|1, mid+1, r);
+		build(p<<1, l, mid);
+		build(p<<1|1, mid+1, r);
+		sg[p] = sg[p<<1] + sg[p<<1|1];
 	};
 
 	function<int(int,int,int,int,int)> query=[&](int p , int l, int r, int ql, int qr){
@@ -44,23 +47,20 @@ void solve(){
 
 	int result = 0;
 	for(int i =0;i< n;i++){
-		if(pos[i]< startPos){
-			if(startPos - pos[i]>k) continue;
-			int temp = (k - 2*(startPos - pos[i]);
-
-			int endP = startPos + (temp>0)?temp:0;
-			int index = upper_bound(pos.begin(), pos.end(), endP) - pos.begin()-1;
-			result = max(result, fruits[index][1] - fruits[startPos][1]);	
+		int pos = fruits[i][0];
+		if(pos< startPos){
+			if(startPos - pos>k) continue;
+			int temp = (k - 2*(startPos - pos));
+			int endP = min(maxPos,startPos + ((temp>0)?temp:0));
+			result = max(result,query(1, 0,maxPos, pos, endP));
 		} else {
-			if(pos[i] - startPos > k) continue;
-
-			int temp = (k - 2*(pos[i]- startPos));
-
-			int startP = startPos - (temp>0)>temp:0;
-
-
+			if(pos - startPos > k) continue;
+			int temp = (k - 2*(pos- startPos));
+			int startP = max(0,startPos - ((temp>0)?temp:0));
+			result = max(result,query(1,0,maxPos, startP, pos));
 		}
 	}
+	cout<< result <<endl;
 }
  
 int main() {
