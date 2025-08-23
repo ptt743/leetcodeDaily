@@ -26,7 +26,7 @@ void solve(){
 	for(int i =1;i<=n;i++){
 		for(int j = 1;j<=maxPts;j++){
 			if((i-j)>=0 && (i-j)<k){
-	dp[i] += dp[i-j]/maxPts;
+				dp[i] += dp[i-j]/maxPts;
 			}
 		}
 	}
@@ -42,10 +42,19 @@ void solve2(){
 
 	vector<double> dp(n+1,0);
 	dp[0] = 1;
+ 	double sum = k>0?1:0;
+	for(int i =1 ;i<=n;i++){
+		dp[i]+= sum/maxPts;
+		if(i>=0 && i<k)
+			sum+= dp[i];
+		if(i- maxPts>=0 && i - maxPts < k){
+			sum -= dp[i - maxPts];
+		}
+	}
 
-
-
-
+	double res = 0;
+	for(int i = k ;i<=n;i++) res += dp[i];
+	return res;
 }
  
 int main() {
