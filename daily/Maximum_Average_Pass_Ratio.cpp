@@ -43,7 +43,7 @@ void solve(){
 		pq.pop();
 		top.pass++;
 		top.total++;
-		top.ratio = (double)(top.pass+1)/(top.total+1) - (double)(top.pass/top.total);
+		top.ratio = (double)(top.pass+1)/(top.total+1) - ((double)top.pass/top.total);
 		pq.push(top);
 		extra--;
 	}
@@ -53,7 +53,7 @@ void solve(){
 		pq.pop();
 		totalRatio += (double)top.pass/top.total;
 	}
-	cout<< totalRatio/ n <<endl;
+	cout<< totalRatio/n <<endl;
 }
  
 int main() {
