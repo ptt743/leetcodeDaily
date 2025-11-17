@@ -18,18 +18,20 @@ using namespace std;
 */
 void solve(){
 	vector<vector<int>> points;
-	vector<pair<int,int>> data;
 	int n = points.size();
+	function<double(vector<int>&, vector<int>&, vector<int>&)>calc =[&](vector<int>& P, vector<int>&R, vector<int>&Q){
+		return 0.5 * abs(P[0]*Q[1] + R[1]*Q[0] + R[0]*P[1] - P[1]*Q[0] - R[0]*Q[1] - R[1]*P[0]) ;
+	};
+	double res = 0.0;
 	for(int i =0;i< n;i++){
-		data.push_back({points[i][0], points[i][1]});
+		for(int j = i+1;j<n;j++){
+			for(int k = j+1;k< n;k++){
+				res = max(res, calc(points[i], points[j], points[k]));
+			}
+		}
 	}
+	cout<< res <<endl;
 	
-	sort( data.begin(), data.end());
-
-	for(int i =0;i< n;i++){
-		
-	}
-
 }
  
 int main() {

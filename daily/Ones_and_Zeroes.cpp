@@ -17,18 +17,29 @@ using namespace std;
 /*
 */
 void solve(){
-	vector<vector<int>> points;
-	vector<pair<int,int>> data;
-	int n = points.size();
-	for(int i =0;i< n;i++){
-		data.push_back({points[i][0], points[i][1]});
-	}
-	
-	sort( data.begin(), data.end());
+	vector<string> strs;
 
-	for(int i =0;i< n;i++){
-		
+	int m;
+	int n;
+	int len = strs.size();
+
+	vector<vector<int>> dp(m+1, vector<int>(n+1,0));
+	for(string s: strs){
+		int zero = 0, one = 0;
+		for(char c: s){
+			if(c=='0') zero++;
+			else one++;
+		}
+
+		for(int i = m ;i>=zero; i--){
+			for(int j = n;j>=one;j--){
+				dp[i][j] = max(dp[i][j], dp[i- zero][j-one]+1);
+			}
+		}
 	}
+
+	return dp[m][n];
+
 
 }
  

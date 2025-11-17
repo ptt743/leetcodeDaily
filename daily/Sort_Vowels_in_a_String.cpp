@@ -17,19 +17,23 @@ using namespace std;
 /*
 */
 void solve(){
-	vector<vector<int>> points;
-	vector<pair<int,int>> data;
-	int n = points.size();
+	string s="lEetcOde";
+	int n = s.size();
+	vector<int> vow;
+	set<char> st = {'e', 'u', 'o', 'a', 'i', 'E', 'U', 'O', 'A', 'I'};
 	for(int i =0;i< n;i++){
-		data.push_back({points[i][0], points[i][1]});
+		if(st.find(s[i])!=st.end()){
+			vow.push_back(s[i]);
+		}
 	}
-	
-	sort( data.begin(), data.end());
-
+	sort(vow.begin(), vow.end());
+	int index = 0;
 	for(int i =0;i< n;i++){
-		
+		if(st.find(s[i])!=st.end()){
+			s[i]= vow[index++];	
+		}
 	}
-
+	cout<< s <<endl;
 }
  
 int main() {

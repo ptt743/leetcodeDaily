@@ -17,19 +17,24 @@ using namespace std;
 /*
 */
 void solve(){
-	vector<vector<int>> points;
-	vector<pair<int,int>> data;
-	int n = points.size();
-	for(int i =0;i< n;i++){
-		data.push_back({points[i][0], points[i][1]});
-	}
-	
-	sort( data.begin(), data.end());
+	string colors="abaac";
 
-	for(int i =0;i< n;i++){
-		
-	}
+	vector<int> neededTime={1,2,3,4,6};
+	int n = colors.size();
+	int total = 0;
+	for(int item : neededTime) total += item;
 
+	int left = 0;
+	int temp = 0;
+	for(int i = 0;i<=n;i++){
+		if(i==n || colors[i]!=colors[left]){
+			total -= temp;
+			temp = 0;
+			left = i;
+		}
+		if(i<n)temp = max(temp, neededTime[i]);
+	}
+	cout<< total <<endl;
 }
  
 int main() {

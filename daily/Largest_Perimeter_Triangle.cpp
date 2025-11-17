@@ -17,19 +17,22 @@ using namespace std;
 /*
 */
 void solve(){
-	vector<vector<int>> points;
-	vector<pair<int,int>> data;
-	int n = points.size();
-	for(int i =0;i< n;i++){
-		data.push_back({points[i][0], points[i][1]});
-	}
-	
-	sort( data.begin(), data.end());
+	vector<int> nums;
+	int n = nums.size();
 
-	for(int i =0;i< n;i++){
-		
-	}
+	sort(nums.begin(), nums.end());
 
+	function<bool(int,int,int)> check=[&](int a, int b, int c){
+		return (a < b +c) && (b < c+a) && ( c < b+ a);
+	};
+	int res =0;
+	for(int i = n-1;i>=2;i--){
+		if(check(nums[i], nums[i-1], nums[i-2])){
+			res = nums[i] + nums[i-1] + nums[i-2];
+			break;
+		}
+	}
+	cout<< res <<endl;
 }
  
 int main() {

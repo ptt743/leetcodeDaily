@@ -17,18 +17,8 @@ using namespace std;
 /*
 */
 void solve(){
-	vector<vector<int>> points;
-	vector<pair<int,int>> data;
-	int n = points.size();
-	for(int i =0;i< n;i++){
-		data.push_back({points[i][0], points[i][1]});
-	}
-	
-	sort( data.begin(), data.end());
+	vector<vector<int>> queries;
 
-	for(int i =0;i< n;i++){
-		
-	}
 
 }
  

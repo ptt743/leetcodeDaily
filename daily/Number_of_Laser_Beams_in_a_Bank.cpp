@@ -17,19 +17,21 @@ using namespace std;
 /*
 */
 void solve(){
-	vector<vector<int>> points;
-	vector<pair<int,int>> data;
-	int n = points.size();
-	for(int i =0;i< n;i++){
-		data.push_back({points[i][0], points[i][1]});
-	}
-	
-	sort( data.begin(), data.end());
+	vector<string> bank;
+	int n = bank.size();
 
-	for(int i =0;i< n;i++){
-		
+	int pre = 0;
+	int result = 0;
+	for(int i = 0; i< n;i++){
+		int m = bank[i].size();
+		int count = 0;
+		for(int j = 0;j< m;j++){
+			count += bank[i][j] - '0';
+		}
+		result += count* pre;
+		if(count !=0) pre =  count;
 	}
-
+	return result;
 }
  
 int main() {

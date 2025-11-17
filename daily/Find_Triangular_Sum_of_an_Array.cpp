@@ -17,19 +17,17 @@ using namespace std;
 /*
 */
 void solve(){
-	vector<vector<int>> points;
-	vector<pair<int,int>> data;
-	int n = points.size();
-	for(int i =0;i< n;i++){
-		data.push_back({points[i][0], points[i][1]});
-	}
-	
-	sort( data.begin(), data.end());
+	vector<int> nums = {1,2,3,4,5};
+	int n = nums.size();
 
-	for(int i =0;i< n;i++){
-		
+	for(int i = 0;i< n-1;i++){
+		for(int j = 0;j< n-1;j++){
+			nums[j] = (nums[j] + nums[j+1])%10;
+			cout<< nums[j]<<" ";
+		}
+		cout<<endl;
 	}
-
+	cout<< nums[0]<<endl;
 }
  
 int main() {

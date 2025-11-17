@@ -17,19 +17,20 @@ using namespace std;
 /*
 */
 void solve(){
-	vector<vector<int>> points;
-	vector<pair<int,int>> data;
-	int n = points.size();
-	for(int i =0;i< n;i++){
-		data.push_back({points[i][0], points[i][1]});
-	}
-	
-	sort( data.begin(), data.end());
+	vector<int> nums;
+	int value;
+	int n = nums.size();
 
-	for(int i =0;i< n;i++){
-		
+	unordered_map<int,int> mp;
+	for(int num : nums){
+		mp[(num%value + value)%value]++;
 	}
-
+	int minVal = 0;
+	while(mp[minVal%value]>0){
+		mp[minVal%value]--;
+		minVal++;
+	}
+	cout<< minVal;
 }
  
 int main() {

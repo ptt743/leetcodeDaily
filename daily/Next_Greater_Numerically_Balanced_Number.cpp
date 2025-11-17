@@ -17,19 +17,23 @@ using namespace std;
 /*
 */
 void solve(){
-	vector<vector<int>> points;
-	vector<pair<int,int>> data;
-	int n = points.size();
-	for(int i =0;i< n;i++){
-		data.push_back({points[i][0], points[i][1]});
+	int n;
+	function<bool(int)> isbalance(int in){
+		vector<int> count(10,0);
+		while(in>0){
+			count[in%10]++;
+			in /=10;
+		}
+		for(int i = 0;i<=9;i++){
+			if(count[i]>0 && count[i]!=i) return false; 
+		}
+		return true;
+	};
+	for(int i = n+1; i<= 1666666;i++){
+		if(isbalance(i)){
+			return i;
+		}
 	}
-	
-	sort( data.begin(), data.end());
-
-	for(int i =0;i< n;i++){
-		
-	}
-
 }
  
 int main() {

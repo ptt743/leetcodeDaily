@@ -17,19 +17,23 @@ using namespace std;
 /*
 */
 void solve(){
-	vector<vector<int>> points;
-	vector<pair<int,int>> data;
-	int n = points.size();
-	for(int i =0;i< n;i++){
-		data.push_back({points[i][0], points[i][1]});
+	string s;
+	int n = s.size();
+	vector<int> count(26,0);
+	for(char item : s){
+		count[item - 'a']++;
 	}
+	int maxv = 0;
+	int maxc = 0;
+	for(int i =0;i< 26;i++){
+		if(i== 'a' -'a' || i == 'e' - 'a' || i == 'u' - 'a' || i == 'o' - 'a' || i == 'i' - 'a'){
+			maxv = max(maxv, count[i]);
+		} else {
+			maxc = max(maxc, count[i]);
+		}
+	}
+	return maxc + maxv;
 	
-	sort( data.begin(), data.end());
-
-	for(int i =0;i< n;i++){
-		
-	}
-
 }
  
 int main() {
