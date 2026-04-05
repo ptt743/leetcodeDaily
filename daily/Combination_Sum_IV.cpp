@@ -17,9 +17,18 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
+	vector<unsigned int>nums;
+	int target;
 
+	int n = nums.size();
+	vector<int> dp(target+1, 0);
 
+	for(int j = 0; j <= target;j++){
+		for(int i=0;i< n;i++){
+			if(j - nums[i]>=0) dp[j] += dp[j - nums[i]];
+		}
+	}
+	return dp[target];
 }
  
 int main() {

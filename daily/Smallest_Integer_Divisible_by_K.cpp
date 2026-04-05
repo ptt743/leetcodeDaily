@@ -17,9 +17,15 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
-
-
+	int k;
+	int remain = 0;
+	for(int len = 1;len<=k;len++){
+		remain = ( remain *10 + 1)%k;
+		if(remain==0){
+			return len;
+		}
+	}
+	return -1;
 }
  
 int main() {

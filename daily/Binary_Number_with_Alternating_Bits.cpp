@@ -18,8 +18,14 @@ using namespace std;
 */
 void solve(){
 	int n;
-
-
+	int pre =-1;
+	while(n!=0){
+		int bit = n%2;
+		n/=2;
+		if(pre!=-1 && bit == pre) return false;
+		pre = bit;
+	}
+	return true;
 }
  
 int main() {

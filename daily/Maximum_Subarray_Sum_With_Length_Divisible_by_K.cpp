@@ -17,8 +17,22 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
+	vector<int> nums;
+	int k;
+	int n = nums.size();
 
+	vector<long long> prefix(n+1,0);
+	for(int i = 1;i<=n;i++){
+		prefix[i] = prefix[i+1] + nums[i-1];
+	}
+
+	vector<long long> dp(n+1,0);
+	long long maxVal = -1e9*n;
+	for(int i =k;i<=n;i++){
+		dp[i] = max(dp[i-k]+ prefix[i] - prefix[i-k], prefix[i]- prefix[i-k]);
+		maxVal = max(maxVal, dp[i]);
+	}
+	return maxVal;
 
 }
  

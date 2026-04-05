@@ -17,9 +17,12 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
-
-
+	string n;
+	int maxV = 0;
+	for(int i = 0;i< n;i++){
+		maxV = max( maxV, s[i]-'0');
+	}
+	return maxV;
 }
  
 int main() {

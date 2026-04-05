@@ -17,9 +17,22 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
+	int amount;
+	vector<int> coins;
+	int n = coins.size();
 
-
+	vector<long long> dp(amount+1, 0);
+	dp[0] = 1;
+    	for(int item : coins){
+    		for(int i = 1;i<=amount;i++){	
+			if(i>=item){
+				dp[i] +=dp[i-item];
+                dp[i]%= INT_MAX;
+			}
+		}
+        //cout<< i <<" "<< dp[i]<<endl;
+	}
+	return dp[amount];
 }
  
 int main() {

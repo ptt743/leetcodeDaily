@@ -17,9 +17,18 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
+	vector<int> nums;
+	int target;
+	int n = nums.size();
 
-
+	unordered_map<int,int> mp;
+	for(int i =0;i< n;i++){
+		if(mp.find(target - nums[i])!= mp.end()){
+			return {mp[target-nums[i]], i};
+		}
+		mp[nums[i]] = i;
+	}
+	return {0,0};
 }
  
 int main() {

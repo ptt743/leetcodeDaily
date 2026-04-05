@@ -17,9 +17,24 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
-
-
+	vector<int> nums;
+	int n = nums.size();
+	int sum = 0;
+	for(int i =0;i<n;i++){
+		sum+=nums[i];
+	}
+	vector<int> dp(n,0);
+	int count =0;
+	for(int i 0;i< n;i++){
+		dp[0]+=nums[i]*count;
+		count++;
+	}
+	int maxVal = dp[0];
+	for(int i =1;i<n;i++){
+		dp[i] = dp[i-1] + sum - n*nums[n-i];
+		maxVal = max(maxVal, dp[i]);
+	}
+	return maxVal;
 }
  
 int main() {

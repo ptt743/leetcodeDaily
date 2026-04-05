@@ -17,9 +17,19 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
+	vector<string> strs;
+	int n = strs.size();
 
-
+	int count =0;
+	int len =strs[0].size();
+	vector<bool> visited(len,false);
+	for(int i = 1;i< n;i++){
+		for(int j = 0;j<len;j++)
+		if(strs[i][j]<strs[i-1][j]) visited[j] = true;
+	}
+	for(int j = 0;j< len;j++)
+		if(visited[j]) count++;
+	return count;
 }
  
 int main() {

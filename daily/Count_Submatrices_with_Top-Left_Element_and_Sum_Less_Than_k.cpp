@@ -17,10 +17,25 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
+	vector<vector<int>>& grid;
+	int k;
 
+	int n = grid.size();
+	int m = grid[0].size();
 
+	vector<int> col(m,0);
+	int count = 0;
+	for(int i =0;i< n;i++){
+		int res =0;
+		for(int j = 0;j< m;j++){
+			col[j]+=grid[i][j];
+			res+= col[j];
+			if(res<=k) count++;
+		}
+	}
+	return count;
 }
+
  
 int main() {
     ios_base::sync_with_stdio(0); cin.tie(0);

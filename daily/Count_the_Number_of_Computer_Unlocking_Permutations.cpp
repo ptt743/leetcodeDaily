@@ -17,8 +17,16 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
-
+	vector<int> complexi;
+	int n = complexi.size();
+	int minVal = INT_MAX;
+	long long res = 1;
+	for(int i = 1;i<n;i++){
+		if(complexi[i]<= complexi[0]) return 0; 
+		res*=(i>0)?i:1ll;
+		res%=mod;
+	}
+	return res;
 
 }
  

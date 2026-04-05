@@ -17,9 +17,21 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
+	vector<int> prices;
+	int n = prices.size();
 
+	vector<long long> dp(n,1);
 
+	for(int i = 1;i< n;i++){
+		if(prices[i]+1 == prices[i-1]){
+			dp[i]+=dp[i-1];
+		}
+	}
+	long long result = 0;
+	for(int i =0; i< n;i++){
+		result+= dp[i];
+	}
+	return result;
 }
  
 int main() {

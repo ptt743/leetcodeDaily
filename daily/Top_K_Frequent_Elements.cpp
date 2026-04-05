@@ -19,11 +19,18 @@ using namespace std;
 void solve(){
 	vector<int> nums;
 	int n = nums.size();
-	vector<int> count(n,0);
+	unordered_map<int,int> mp;
+	for(int item: nums) mp[item]++;
+	priority_queue<pair<int,int> , vector<pair<int,int>> , decltype([](pair<int,int> a, pair<int,int> b){
+			return a. second > b.second;})> pq;
+ 	for(auto& it : mp){
+		pq.push({it.first, it.second});
+		if(pq.size()>k) pq.pop();
+	}
 	vector<int> res;
-	for(int i =0;i< n;i++){
-		count[nums[i]]++;
-		if(count[nums[i]]>=2) res.push_back(nums[i]);
+	while(!pq.empty()){
+		res.push_back(pq.top().first);
+		pq.pop();
 	}
 	return res;
 }
@@ -33,3 +40,4 @@ int main() {
     solve();
     return 0;
 }
+

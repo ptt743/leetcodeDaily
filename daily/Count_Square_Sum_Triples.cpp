@@ -18,8 +18,15 @@ using namespace std;
 */
 void solve(){
 	int n;
-
-
+	int count=0;
+	for(int a = 1;a<=n-1;a++){
+		for(int b = 1;b<=n-1;b++){
+			for(int c = b+1; c<=n;c++){
+				if( c*c == b*b + a*a) count++;		
+			}
+		}
+	}
+	return count;
 }
  
 int main() {

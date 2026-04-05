@@ -17,9 +17,19 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
+	vector<int> nums;
+	int n = nums.size();
+	priority_queue<int,vector<int>, decltype([](int a, int b){return a> b;})> pq;
+	for(int i =1;i< n;i++) pq.push(nums[i]);
 
-
+	int count = 2;
+	int res = nums[0];
+	while(count>0){
+		res += pq.top();
+		pq.pop();
+		count--;
+	}
+	return res;
 }
  
 int main() {

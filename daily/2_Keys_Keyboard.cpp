@@ -18,8 +18,31 @@ using namespace std;
 */
 void solve(){
 	int n;
+	int init = 2;
+	int res = 0;
+	while(n>1){
+		if(n%init==0){
+			res+= init;
+			n/=init;
+		}else {
+			init++;
+		}
+	}
+	return res;
+}
 
-
+void solve2(){
+	int n;
+	vector<int> dp(n+1,INT_MAX);
+	dp[1] = 0;
+	for(int i = 2;i<=n;i++){
+		for(int j = 1;j<i;j++){
+			if(i%j==0){
+				dp[i] = min(dp[i], dp[j] + i/j);
+			}
+		} 
+	}
+	return dp[n];
 }
  
 int main() {

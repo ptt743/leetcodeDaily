@@ -17,8 +17,20 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
-
+	vector<vector<int>> intervals;
+	int n = intervals.size();
+	function<bool(vector<int>&, vector<int>&)> option=[&](vector<int>& a, vector<int>&b){
+		return a[1] < b[1];
+	};
+	sort(intervals.begin(), intervals.end(), option);
+	int temp = intervals[0][1];
+	int count=0;
+	for(int i=1;i<n;i++){
+		if(intervals[i][0] >= temp){
+			temp = intervals[i][1];
+		} else count++;
+	}
+	return count;
 
 }
  

@@ -17,9 +17,17 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
-
-
+	vector<int> nums;
+	for(int& item: nums){
+		int d = 1;
+		int res = -1;
+		while((item&d)!=0){
+			res = item - d;
+			d<<=1;
+		}
+		item = res;
+	}
+	return nums;
 }
  
 int main() {

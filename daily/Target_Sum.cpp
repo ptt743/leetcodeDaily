@@ -17,9 +17,21 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
+	vector<int> nums;
+	int target;
 
+	int n = nums.size();
 
+	vector<unordered_map<int,int>> dp(n);
+	dp[0][-nums[0]]+=1;
+	dp[0][nums[0]]+=1;
+	for(int i= 1;i< n;i++){
+		for(auto& item : dp[i-1]){
+			dp[i][item.first+nums[i]]+= item.second;
+			dp[i][item.first-nums[i]]+=item.second;
+		}
+	}
+	return dp[n-1][target];
 }
  
 int main() {

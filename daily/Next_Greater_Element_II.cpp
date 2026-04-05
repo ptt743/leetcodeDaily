@@ -17,9 +17,20 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
+	vector<int> nums;
+	int n = nums.size();
 
+	vector<int> result(n,-1);
 
+	stack<int> st;
+	for(int i = 2*n-1;i>=0;i--){
+		while(!st.empty() && nums[st.top()] <= nums[i]){
+			st.pop();
+		}
+		if(!st.empty()) result[i] = nums[st.top()];
+		st.push(i);
+	}
+	return result;
 }
  
 int main() {

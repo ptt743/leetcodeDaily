@@ -17,9 +17,19 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
+	vector<int> nums;
+	int n = nums.size();
 
-
+	stack<int> st;
+	for(int i = n-1;i>=0;i--){
+		bool check = false;
+		while(!st.empty() && nums[i]> nums[st.top()]){
+			check = true;
+			st.pop();
+		}
+		st.push(i);
+	}
+	return st.size();
 }
  
 int main() {

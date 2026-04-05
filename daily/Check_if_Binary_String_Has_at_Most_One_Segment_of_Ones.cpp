@@ -17,9 +17,13 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
-
-
+	string s;
+	int n = s.size();
+    	if(n==1) return true;
+	for(int i = 1;i< n;i++){
+		if(s[i] != s[i-1] && s[i]=='1') return false;
+	}
+	return true;
 }
  
 int main() {

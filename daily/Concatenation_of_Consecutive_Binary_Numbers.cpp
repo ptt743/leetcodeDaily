@@ -18,8 +18,18 @@ using namespace std;
 */
 void solve(){
 	int n;
-
-
+	int mod = 1e9 + 7;
+	long long val = 0;
+	for(int i = 1; i<=n;i++){
+		int temp = i;
+		int count =0;
+		while(temp>0){
+			temp/=2;
+			count++;
+		}
+		val = (( val << count) | i)%mod;
+	}
+	return val;
 }
  
 int main() {

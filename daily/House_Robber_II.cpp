@@ -19,13 +19,19 @@ using namespace std;
 void solve(){
 	vector<int> nums;
 	int n = nums.size();
-	vector<int> count(n,0);
-	vector<int> res;
-	for(int i =0;i< n;i++){
-		count[nums[i]]++;
-		if(count[nums[i]]>=2) res.push_back(nums[i]);
-	}
-	return res;
+    	if(n==0) return 0;
+    	if(n==1) return nums[0];
+	function<int(int,int)> calc=[&](int start, int end){
+		vector<int> dp(n+1,0);
+		for(int i = start; i<end;i++){
+            		dp[i] = nums[i];
+			if(i-1>=start) dp[i] = max(dp[i-1], dp[i]);
+			if(i-2>=start) dp[i] = max(dp[i-2]+ nums[i], dp[i]);
+		}
+		return dp[end-1];
+	};
+	return max(calc(0,n-1), calc(1,n));
+
 }
  
 int main() {

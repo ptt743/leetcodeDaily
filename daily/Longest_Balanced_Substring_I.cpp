@@ -17,9 +17,22 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
-
-
+	string s;
+	int n = s.size();
+	int len = 0;
+	for(int i = 0;i<n;i++){
+		vector<int> chars(26,0);
+		for(int j=i;j>=0;j--){
+			chars[s[j] - 'a']++;
+			int pre = 0;
+			for(int k =0;k<26;k++){
+                if(chars[k]==0) continue;
+				pre = (pre==0)?chars[k]:((pre!=chars[k])?-1:pre);
+			}
+			if(pre>0) len = max(len, i - j+1);
+		}
+	}
+	return len;
 }
  
 int main() {

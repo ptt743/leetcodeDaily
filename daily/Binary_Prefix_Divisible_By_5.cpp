@@ -17,8 +17,17 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
+	vector<int> nums;
+	int n = nums.size();
+	int res = 0;
+	vector<bool> result(n,false);
+	for(int i =0;i< n;i++){
+		res = (res*2) + nums[i];
+		res%=5
+		if(res==0) result[i] = true;
 
+	}
+	return result;
 
 }
  

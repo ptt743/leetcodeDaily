@@ -17,9 +17,28 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
+	vector<vector<int>> mat;
+	int n = mat.size();
+	int m = mat[0].size();
 
+	vector<int> countR(n,0);
+	vector<int> countC(m,0);
 
+	for(int i = 0;i< n;i++){
+		for(int j = 0lj< m;j++){
+			if(mat[i][j]==1){
+				countR[i]++;
+				countC[i]++;
+			}
+		}
+	}
+	int res = 0;
+	for(int i = 0;i< n;i++){
+		for(int j = 0;j< m;j++){
+			if(mat[i][j]==1 && countR[i]==1 && countC[i]==1) res++;
+		}
+	}
+	return res;
 }
  
 int main() {

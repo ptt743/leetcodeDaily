@@ -17,9 +17,20 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
-
-
+	string s;
+	int n = s.size();
+	char pre = s[0];
+	int left =0;
+	int prelen = 0;
+	int count = 0;
+	for(int i = 0;i< n;i++){
+		if(s[i]!= s[left]){
+			prelen = i - left;
+			left = i;
+		}
+		if(i - left+1 <= prelen) count++;
+	}
+	return count;
 }
  
 int main() {

@@ -17,9 +17,18 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
+	vector<int> happiness;
+	int k;
+	int n = happiness.size();
 
-
+	sort(happiness.begin(), happiness.end());
+	int count = 0;
+	long long res =0;
+	for(int i = n-1;i>= max(0,n - k);i--){
+		res += (happiness[i]- count)>=0?( happiness[i] - count):0 ;
+		count++;
+	}
+	return res;
 }
  
 int main() {

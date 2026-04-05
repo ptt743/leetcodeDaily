@@ -17,9 +17,25 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
-
-
+	vector<int> digits;
+	int n = digits.size();
+	int temp =1;
+	for(int i = n-1;i>=0;i--){
+		int val = digits[i]+ temp;
+		if(val>=10){
+			digits[i] = 0;
+			temp =1;
+		} else{
+			digits[i] = val;
+			temp = 0;
+		}
+	}
+	if(temp ==0) return digits;
+	else{
+		vector<int> result = {1};
+		for(int i =0;i< n;i++) result.push_back(digits[i]);
+		return result;
+	}
 }
  
 int main() {

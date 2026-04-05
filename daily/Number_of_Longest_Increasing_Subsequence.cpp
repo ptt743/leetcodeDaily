@@ -19,12 +19,21 @@ using namespace std;
 void solve(){
 	vector<int> nums;
 	int n = nums.size();
-	vector<int> count(n,0);
-	vector<int> res;
-	for(int i =0;i< n;i++){
-		count[nums[i]]++;
-		if(count[nums[i]]>=2) res.push_back(nums[i]);
+	vector<pair<int,int>> dp(n,{1,1});
+	int maxLen = 1;
+	for(int i = 0;i< n;i++){
+		for(int j = 0; j< i;j++){
+			if(nums[j]<nums[i]){
+				int len  = dp[j].first+1;
+				if(len> dp[i].first) dp[i] = {len,dp[j].second};
+				else if(len == dp[i].first) dp[i].second+= dp[j].second;
+				maxLen = max(maxLen, len);
+			}
+		}
 	}
+	int res = 0;
+	for(int i = 0;i< n;i++)
+		if(dp[i].first == maxLen) res+= dp[i].second;
 	return res;
 }
  

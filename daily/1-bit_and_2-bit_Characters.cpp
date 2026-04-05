@@ -17,9 +17,19 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
+	vector<int> bits;
+	int n = bits.size();
+	int index =0;
+	bool check= true;
+	while(index<n){
+		if(bits[index]==1){
+			if(index== n-2 || index == n-1) return false;
+			index+=2;
+		}
+		if(bits[index]==0) index+=1;
 
-
+	}
+	return check;
 }
  
 int main() {

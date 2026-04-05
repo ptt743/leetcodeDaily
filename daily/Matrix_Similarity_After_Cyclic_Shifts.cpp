@@ -17,9 +17,24 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
+	vector<vector<int>> mat;
+	int k;
+	int n = mat.size();
+	int m = mat[0].size();
 
+	for(int i =0;i<n;i++){
+		vector<int> temp = mat[i];
+		int step = k%m;
+		for(int j = 0;j< step;j++){
+			int pre = mat[i][m-1];
+			for(int k = 0;k<m;k++){
+                int t = mat[i][k];
+				mat[i][k] = pre;
+                pre = t;
 
+			}
+		}
+		if(mat[i]!=temp) return false;
 }
  
 int main() {

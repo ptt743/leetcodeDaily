@@ -18,14 +18,31 @@ using namespace std;
 */
 void solve(){
 	vector<int> nums;
+	int k;
 	int n = nums.size();
-	vector<int> count(n,0);
-	vector<int> res;
-	for(int i =0;i< n;i++){
-		count[nums[i]]++;
-		if(count[nums[i]]>=2) res.push_back(nums[i]);
+	vector<int> pre(n,0);
+	int left = -1;
+	bool check = true;
+	for(int  i =0;i< n-1;i++){
+		if(nums[i]==1){
+			if(left!=-1 && (i - left-1<k)){
+				check = false;
+				break;
+			}
+			left = i;
+		}
 	}
-	return res;
+	int right = n;
+	for(int  i =n-1;i>=0;i--){
+		if(nums[i]==1){
+			if(right!=n && (right - i -1<k)){
+				check = false;
+				break;
+			}
+			right = i;
+		}
+	}
+	return check;
 }
  
 int main() {

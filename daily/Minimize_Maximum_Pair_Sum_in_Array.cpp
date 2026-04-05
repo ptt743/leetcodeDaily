@@ -17,8 +17,17 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
-
+	vector<int> nums;
+	int n = nums.size();
+	sort(nums.begin(), nums.end());
+	int val = 0;
+	int left= 0, right = n-1;
+	while(left<right){
+		val = max(nums[right] - nums[left], val);
+		left++;
+		right--;
+	}
+	return val;
 
 }
  

@@ -17,9 +17,21 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
+	vector<int> days;
+	vector<int> costs;
+	int n = days.size();
 
-
+	vector<int> dp(n,INT_MAX);
+	vector<int> type = {1,7,30};
+	for(int i =0;i< n;i++){
+		for(int j = 0;j<3;j++){
+			int pre = 0;
+			int index = upper_bound(days.begin(), days.end(), days[i] - type[j]) - days.begin()-1;
+			if(index>=0) pre = dp[index];
+			dp[i] = min(dp[i], pre + costs[j]);
+		}
+	}
+	return dp[n-1];
 }
  
 int main() {

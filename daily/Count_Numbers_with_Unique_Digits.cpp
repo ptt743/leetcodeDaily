@@ -18,8 +18,17 @@ using namespace std;
 */
 void solve(){
 	int n;
-
-
+	vector<int> dp(n,0);
+    	if(n==0) return 1;
+	dp[0] = 9;
+	int count = 9;
+	for(int i = 1;i< n;i++){
+		dp[i] = dp[i-1]*count;
+		count--;
+	}
+    	int res =0;
+    	for(int i =1;i< n;i++)res+= dp[i];
+	return res +10;
 }
  
 int main() {

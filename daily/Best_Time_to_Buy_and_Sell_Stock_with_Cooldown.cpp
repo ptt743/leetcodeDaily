@@ -17,9 +17,17 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
-
-
+	vector<int> prices;
+	int n = prices.size();
+	vector<int> dp(n+1,0);
+	
+	for(int i =1;i<n;i++){
+		for(int j = i-1;j>=0;j--){
+			dp[i] = max(dp[i], prices[i] - prices[j] + ((j-2>=0)?dp[j-2]:0));
+		}
+		if(i-1>=0)dp[i] = max(dp[i], dp[i-1]);
+	}
+	return dp[n-1];
 }
  
 int main() {

@@ -18,15 +18,27 @@ using namespace std;
 */
 void solve(){
 	vector<int> nums;
+	int p ;
 	int n = nums.size();
-	vector<int> count(n,0);
-	vector<int> res;
-	for(int i =0;i< n;i++){
-		count[nums[i]]++;
-		if(count[nums[i]]>=2) res.push_back(nums[i]);
+	map<int,int> mp;
+	int sum = 0;
+	for(int item : nums)
+		sum= (sum+item)%p;
+	int remain = sum%p;
+    	if(remain ==0) return 0;
+	int pref = 0;
+	int res = n;
+	mp[0] = -1;
+	for(int i=0;i<n;i++){
+		pref= (pref + nums[i])%p;
+		int f  = ( pref - remain + p)%p;
+		if(mp.find(f)!=mp.end()){
+			res = min(res, i - mp[f]);
+		}
+		mp[pref] = i;
 	}
+    	if(res==n) return -1;
 	return res;
-}
  
 int main() {
     ios_base::sync_with_stdio(0); cin.tie(0);

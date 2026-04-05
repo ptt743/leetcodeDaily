@@ -17,9 +17,18 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
+	vector<int> nums;
+	int k;
+	int n = nums.size();
 
-
+	multiset<int> st;
+	for(int i = 0;i< n;i++){
+		st.insert(nums[i]);
+		if(st.size()>k){
+			st.erase(st.begin());
+		}
+	}
+	return *st.begin();
 }
  
 int main() {

@@ -17,9 +17,20 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
-
-
+	int target;
+	long long l = 1, r = abs(target);
+	while(l<=r){
+		long long mid = (l + r)/2;
+		long long sum = ( 1+ mid)*mid/2;
+		if(sum >= abs(target) ) r = mid-1;
+		else l = mid +1;
+	}
+	long long sum = ( l +1)*l/2;
+	while( ( sum- abs(target))%2!=0){
+		l++;
+		sum+=l;
+	}
+	return l;
 }
  
 int main() {

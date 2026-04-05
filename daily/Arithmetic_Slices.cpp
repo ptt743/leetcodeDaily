@@ -17,8 +17,24 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
+	vector<int> nums;
+	int n = nums.size();
+    	if(n<3) return 0;
+	vector<int> dp(n+1,0);
+	int maxlen = 0;
+    	vector<int> prefix(5001,0);
+    	int res =0;
+	for(int i =2;i< n;i++){
+		if(nums[i]- nums[i-1]== nums[i-1] - nums[i-2]){
 
+			dp[i]=dp[i-1]+1;
+		}else {
+			dp[i]=0;
+		}
+        	res+=dp[i];
+	}
+    	int len = maxlen+2;
+	return res;
 
 }
  

@@ -18,8 +18,17 @@ using namespace std;
 */
 void solve(){
 	int n;
-
-
+	if(n==0)return 1;
+	int res = 0;
+    	int len =0;
+	while(n!=0){
+		int t = n%2;
+		n/=2;
+        t = (t==1)?0:1;
+		res = (t<<len)|(res);
+        len++;
+	}
+	return res;
 }
  
 int main() {

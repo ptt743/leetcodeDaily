@@ -17,9 +17,18 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
+	int low;
+	int high;
 
-
+	// 0 1 2 3 4 5
+	
+	int left = low/2;
+	if(low%2!=0) left++;
+	int right = high/2;
+	if(high%2!=0) right++;
+	int result = right - left;
+	if(low%2!=0) result+=1;
+	return result;
 }
  
 int main() {

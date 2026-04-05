@@ -19,13 +19,31 @@ using namespace std;
 void solve(){
 	vector<int> nums;
 	int n = nums.size();
-	vector<int> count(n,0);
-	vector<int> res;
-	for(int i =0;i< n;i++){
-		count[nums[i]]++;
-		if(count[nums[i]]>=2) res.push_back(nums[i]);
+	
+	unordered_map<int,int> left;
+	unordered_map<int,int> ending;
+
+	for(int item : nums) left[item]++;
+
+	for(int item : nums){
+		if(left[item]==0) continue;
+
+		if(ending[item-1]>0){
+			left[item]--;
+			ending[item]++;
+			ending[item-1]--;
+			continue;
+		}
+		if(left[item+1]>0 && left[item+2]>0){
+			left[item]--;
+			left[item+1]--;
+			left[item+2]--;
+			ending[item+2]++;
+			continue;
+		}
+		return false;
 	}
-	return res;
+	return true;
 }
  
 int main() {

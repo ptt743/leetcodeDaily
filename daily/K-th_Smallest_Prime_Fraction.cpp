@@ -17,8 +17,18 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
+	vector<int> arr;
+	int k;
+	int n = arr.size();
 
+	priority_queue<pair<int,int>, vector<pair<int,int>> , decltype([](pair<int,int>a, pair<int,int>b){ return a.first * b.second  < b.first * a.second;})>pq;
+	for(int i = 0;i< n;i++){
+		for(int j = 0; j< i;j++){
+			pq.push({arr[j], arr[i]});
+			if(pq.size() > k ) pq.pop();
+		}
+	}
+	return {pq.top().first, pq.top().second}; 
 
 }
  

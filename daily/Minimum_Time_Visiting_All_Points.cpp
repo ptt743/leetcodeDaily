@@ -17,9 +17,16 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
-
-
+	vector<vector<int>> points;
+	int n = points.size();
+	int sum = 0;
+	for(int i = 1;i<n;i++){
+		int u = abs(points[i][0] - points[i-1][0]);
+		int v = abs(points[i][1] - points[i-1][1]);
+		if(u == v) sum+= u;
+		else sum += max(u,v);
+	}
+	return sum;
 }
  
 int main() {

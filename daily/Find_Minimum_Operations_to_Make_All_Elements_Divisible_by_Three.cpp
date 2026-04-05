@@ -17,9 +17,13 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
-
-
+	vector<int> nums;
+	int n = nums;
+	int op = 0;
+	for(int i = 0;i< n;i++){
+		op+= (nums[i]%3!=0)?1:0;
+	}
+	return op;
 }
  
 int main() {

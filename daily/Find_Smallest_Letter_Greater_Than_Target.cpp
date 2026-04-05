@@ -17,9 +17,17 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
-
-
+	vector<char>& letters;
+	char target;
+	char res = letters[0];
+	bool check = res > target;
+	for(char item : letters){
+		if(item > target && (item < res || !check )){
+            check = true;
+			res = item;
+		}
+	}
+	return res;
 }
  
 int main() {

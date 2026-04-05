@@ -17,9 +17,23 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
-
-
+	vector<int> nums;
+	int n = nums.size();
+	int sum = 0;
+	for(int i = 0;i<n;i++){
+		int count = 0;
+		int val = sqrt(nums[i]);
+		int temp = nums[i]+1;
+		if(nums[i]== val*val) continue;
+		for(int j = 2;j< val;j++){
+			if(nums[i]%val==0){
+				count+=2;
+				temp += j + (nums[i])/j;
+			}
+		}
+		if(count==2) sum+= temp;
+	}
+	return sum;
 }
  
 int main() {

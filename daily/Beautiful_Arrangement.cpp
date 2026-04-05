@@ -18,7 +18,25 @@ using namespace std;
 */
 void solve(){
 	int n;
-
+	vector<int> nums(n,0);
+	for(int i = 0;i< n;i++) nums[i] = i+1;
+	int count = 0;
+	function<void(int)> RC=[&](int left){
+		if(left==n){
+			count++;
+			return;
+		}
+		for(int i  = left; i< n;i++){
+			swap(nums[i], nums[left]);
+            if(nums[left]%(left+1)==0 || (left+1)%nums[left]==0){
+			    RC(left+1);
+            }
+			swap(nums[i], nums[left]);
+		}
+	};
+	RC(0);
+	return count;
+    }
 
 }
  

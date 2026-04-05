@@ -17,8 +17,11 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
+	vector<vector<int>> grid;
+	int n = grid.size();
+	int m = grid[0].size();
 
+	for(
 
 }
  

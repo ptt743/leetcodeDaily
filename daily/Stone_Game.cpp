@@ -17,7 +17,8 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
+	vector<int> piles;
+	int n = piles.size();
 
 
 }

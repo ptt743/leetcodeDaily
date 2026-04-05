@@ -17,9 +17,22 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
+	vector<int> weight;
+	int n = weight.size();
 
-
+	stack<int> st;
+	set<int> sett;
+	int count = 0;
+	for(int i = 0;i< n;i++){
+		while(!st.empty() && st.top() > nums[i]){
+			count++;
+			st.clear();
+			break;
+		}
+		if(check)while(!st.empty()) st.pop();
+		else st.push(nums[i]);
+	}
+	return count;
 }
  
 int main() {

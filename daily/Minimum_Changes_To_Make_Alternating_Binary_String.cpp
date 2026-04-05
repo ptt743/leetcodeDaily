@@ -17,9 +17,19 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
-
-
+	string s;
+	int n = s.size();
+	int count1 = 0;
+	for(int i =0;i<n;i++){
+		if(i%2==0 && nums[i]!='1')count1++;
+		else if(i%2!=0 && nums[i]!='0')count1++;
+	}
+	int count2 =0;
+	for(int i =0;i<n;i++){
+		if(i%2==0 && nums[i]!='0')count2++;
+		else if(i%2!=0 && nums[i]!='1')count2++;
+	}
+	return min(count1, count2);
 }
  
 int main() {

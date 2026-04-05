@@ -17,9 +17,12 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
-
-
+	vector<int> nums;
+	int k;
+	int sum = 0;
+	for(int item : nums) sum+= item;
+	int result = sum%k;
+	return result;
 }
  
 int main() {

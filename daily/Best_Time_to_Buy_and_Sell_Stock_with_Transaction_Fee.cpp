@@ -17,9 +17,18 @@ using namespace std;
 /*
 */
 void solve(){
-	int n;
+	vector<int> prices;
+	int fee;
+	int n = prices.size();
 
-
+	vector<int> empty = vector<int>(n,0);
+	vector<int> hold = vector<int>(n,0);
+	hold[0] = prices[0];
+	for(int  i = 1;i< n;i++){
+		empty[i] = max( empty[i-1], hold[i-1] + prices[i] - fee);
+		hold[i] = max(hold[i-1], empty[i-1] - prices[i]);
+	}
+	return empty[n-1];
 }
  
 int main() {
