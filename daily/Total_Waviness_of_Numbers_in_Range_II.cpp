@@ -17,19 +17,7 @@ using namespace std;
 /*
 */
 void solve(){
-	vector<int> cost;
-	int n = cost.size();
-
-    	priority_queue<int, vector<int>, decltype([](int a, int b) { return a < b; })> pq;
-	for(int item : cost) pq.push(item);
-	int cos = 0;
-	while(pq.size()>=2){
-		cos+= pq.top(); pq.pop();
-		cos+=pq.top(); pq.pop();
-		if(!pq.empty()) pq.pop();
-	}
-    if(pq.size()>0) cos += pq.top();
-	return cos;	
+		
 }
  
 int main() {

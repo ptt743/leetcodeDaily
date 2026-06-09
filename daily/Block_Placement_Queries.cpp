@@ -17,7 +17,7 @@ using namespace std;
 /*
 */
 void solve(){
-	struct segmentTree{
+        struct segmentTree{
 		vector<int> tree;
 		int n;
 		segmentTree(int size){
@@ -40,7 +40,7 @@ void solve(){
 		}
 
 		int get(int node, int left, int right, int l, int r){
-			if(l>=left && r <= right) return tree[node];
+			if(l<=left&& r >=right) return tree[node];
 			if(r<left || l> right) return 0;
 			int mid = (left+right)/2;
 			int res = max(get(node*2, left, mid, l,r), get(node*2+1, mid+1, right, l,r));
@@ -48,9 +48,41 @@ void solve(){
 		}
 	};
 
+	int maxVal =0;
+	for(vector<int> item : queries){
+		maxVal = max(maxVal, item[1]);
+	}
 
+	segmentTree node(maxVal+2);
 
+	set<int> st;
+	st.insert(0);
+	int n= queries.size();
+	vector<bool> res;
+	for(int i = 0;i< n ;i++){
+		int type = queries[i][0];
+		if(type==1){
+			int idx = queries[i][1];
+			auto it = st.upper_bound(idx);
+			int next = ( it!=st.end())?*it:-1;
+			int prev = *(--it);
+			node.insert(1, 0, maxVal, idx, idx - prev);	
+			if(next!=-1){
+				node.insert(1,0, maxVal, next, next - idx);
+			}
+			st.insert(idx);
+		} else {
+			int idx = queries[i][1];
+			int sz = queries[i][2];
 
+			int prev = *(--st.upper_bound(idx));
+
+			int val = max(idx - prev, node.get(1,0,maxVal, 0, prev));
+			if(val >=sz) res.push_back(true);
+			else res.push_back(false);
+		}
+	}
+	return res;
 }
  
 int main() {

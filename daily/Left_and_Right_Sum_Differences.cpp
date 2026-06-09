@@ -17,19 +17,19 @@ using namespace std;
 /*
 */
 void solve(){
-	vector<int> cost;
-	int n = cost.size();
+	vector<int> nums;
+	int = nums.size();
 
-    	priority_queue<int, vector<int>, decltype([](int a, int b) { return a < b; })> pq;
-	for(int item : cost) pq.push(item);
-	int cos = 0;
-	while(pq.size()>=2){
-		cos+= pq.top(); pq.pop();
-		cos+=pq.top(); pq.pop();
-		if(!pq.empty()) pq.pop();
+	vector<int> left(n,0), right(n,0);
+	for(int i =1;i< n; i++){
+		left[i] = left[i-1] + nums[i-1];
 	}
-    if(pq.size()>0) cos += pq.top();
-	return cos;	
+	for(int i =n-2;i>=0; i--){
+		right[i] = right[i+1] + nums[i+1];
+	}
+	vector<int> result(n,0);
+	for(int i = 0;i< n;i++) result[i] = abs(left[i] - right[i]);
+	return result;
 }
  
 int main() {

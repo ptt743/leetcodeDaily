@@ -17,19 +17,27 @@ using namespace std;
 /*
 */
 void solve(){
-	vector<int> cost;
-	int n = cost.size();
-
-    	priority_queue<int, vector<int>, decltype([](int a, int b) { return a < b; })> pq;
-	for(int item : cost) pq.push(item);
-	int cos = 0;
-	while(pq.size()>=2){
-		cos+= pq.top(); pq.pop();
-		cos+=pq.top(); pq.pop();
-		if(!pq.empty()) pq.pop();
+	int nums1;
+	int nums2;
+	int res = 0;
+	for(int item = nums1; item <=nums2; item ++){
+		int pre = -1, mid = -1, next = -1;
+		int count = 0;
+		int temp = item;
+		while(temp>0){
+			count++;
+			pre = mid;
+			mid = next;
+			next = temp%10;
+			temp/=10;
+			if(count>=3){
+				if((mid > pre && mid > next) || (mid <pre && mid < next)){
+					res++;
+				}
+			}
+		}
 	}
-    if(pq.size()>0) cos += pq.top();
-	return cos;	
+	return res;
 }
  
 int main() {
