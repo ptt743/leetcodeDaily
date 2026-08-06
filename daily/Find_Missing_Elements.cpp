@@ -17,9 +17,24 @@ using namespace std;
 /*
 */
 void solve(){
-  vector<int> piles;
-  int n = piles.size();
-  return true;
+  vector<int> nums;
+  int n = nums.size();
+
+  int minInt = INT_MAX;
+  int maxInt = INT_MIN;
+  unordered_map<int,bool> mp;
+  for(int item : nums){
+    minInt = min(minInt, item);
+    maxInt = max(maxInt, item);
+    mp[item]= true;
+  }
+  vector<int> res;
+  for(int i = minInt; i<maxInt;i++){
+    if(mp.find(i)==mp.end()){
+      res.push_back(i);
+    }
+  }
+  return res;
 }
  
 int main() {

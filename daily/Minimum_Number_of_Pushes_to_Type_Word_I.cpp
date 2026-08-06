@@ -17,9 +17,21 @@ using namespace std;
 /*
 */
 void solve(){
-  vector<int> piles;
-  int n = piles.size();
-  return true;
+  string word;
+  int n = word.size();
+  set<char> st;
+  for(char item : word){
+    st.insert(item);
+  }
+  int count = st.size();
+  int res = 0;
+  int t = 1;
+  while(count > 0){
+    res += t* (count>=8?(8):(count));
+    count-=8;
+    t+=1;
+  }
+  return res;
 }
  
 int main() {

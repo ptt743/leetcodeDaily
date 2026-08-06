@@ -17,9 +17,10 @@ using namespace std;
 /*
 */
 void solve(){
-  vector<int> piles;
-  int n = piles.size();
-  return true;
+  vector<int>& stoneValue;
+  int n = stoneValue.size();
+  
+
 }
  
 int main() {

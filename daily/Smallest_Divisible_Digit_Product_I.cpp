@@ -17,9 +17,19 @@ using namespace std;
 /*
 */
 void solve(){
-  vector<int> piles;
-  int n = piles.size();
-  return true;
+  int n;
+  int t;
+  while(n<=100){
+    int k =n;
+    int res = 1;
+    while(k!=0){
+      res*= (k%10);
+      k/=10;
+    }
+    if(res%t==0) return n;
+    n++;
+  }
+  return 1;
 }
  
 int main() {
